@@ -15,6 +15,7 @@ type User = {
 
 const subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
    if (req.method === 'POST') {
+      // Req passes cookies that Next-auth uses to verify the user is logged
       const session = await getSession({ req });
 
       const user = await fauna.query<User>(

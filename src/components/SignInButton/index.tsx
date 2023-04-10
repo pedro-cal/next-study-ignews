@@ -5,6 +5,7 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 
 export function SignInButton() {
    const session = useSession();
+   console.log('session:\n', session);
 
    return session.data ? (
       <button
@@ -14,7 +15,7 @@ export function SignInButton() {
          disabled={session.status == 'loading'}
       >
          <FaGithub color="#04d361" />
-         {session.data.user.name}
+         {session?.data?.user?.name}
          {/* {console.log('session:\n', session)} */}
          <FiX color="#737380" className={styles.closeIcon} />
       </button>
